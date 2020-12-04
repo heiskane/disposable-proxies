@@ -6,7 +6,8 @@ dante_user:
   user.present:
     - name: heiskane
     - shell: /usr/sbin/nologin
-    - password: $6$Pojx5jnjRxDO2E96$tzZazL8Pvdv3YaLULra.UukbBPCE/Pn3g6smmbODAI6teQEBA4j4iJzGWrALYcj/z.4BKlEU/d2gLbbEbr99Y1
+    - password: YouMightWantToChangeThisDefaultPassword
+    - hash_password: True 
 
 add_config:
   file.managed:

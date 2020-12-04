@@ -1,0 +1,5 @@
+proxy-server:
+  - proxy-1:
+      location: eu-central
+  - proxy-2:
+      location: eu-west
