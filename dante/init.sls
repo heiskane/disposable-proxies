@@ -16,9 +16,8 @@ add_config:
     - require:
       - pkg: install_dante
 
-reload_dante:
+danted:
   service.running:
-    - name: danted
     - enable: True
     - restart: True
     - watch:
@@ -34,3 +33,10 @@ reload_dante:
   file.recurse:
     - source: salt://dante/ufw/
     - file_mode: 640
+
+ufw:
+  service.running:
+    - enable: True
+    - restart: True
+    - watch:
+      - file: /etc/ufw/
