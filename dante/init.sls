@@ -28,18 +28,19 @@ danted:
     - require:
       - pkg: install_dante
 
+# TODO Set dafaut firewall rule for incoming to DROP pr something
+dante_tcp:
+  iptables.append:
+    - chain: INPUT
+    - jump: ACCEPT
+    - dport: 1080
+    - proto: tcp
+    - save: True
 
-# This part will only allow connections to port 1080
-# So ssh will not be allowed as this is intended to
-# setup DISPOSABLE socks5 proxies fast
-/etc/ufw/:
-  file.recurse:
-    - source: salt://dante/ufw/
-    - file_mode: 640
-
-ufw:
-  service.running:
-    - enable: True
-    - restart: True
-    - watch:
-      - file: /etc/ufw/
+dante_udp:
+  iptables.append:
+    - chain: INPUT
+    - jump: ACCEPT
+    - dport: 1080
+    - proto: udp
+    - save: True
