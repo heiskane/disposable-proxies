@@ -1,0 +1,3 @@
+users:
+  heiskane:
+    password: YouMightWantToChangeThisDefaultPassword

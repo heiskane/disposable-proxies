@@ -2,12 +2,15 @@ install_dante:
   pkg.installed:
     - name: dante-server
 
-dante_user:
+# Get users from /srv/pillar/users
+{% for user in pillar['users'] %}
+{{ user }}:
   user.present:
-    - name: heiskane
     - shell: /usr/sbin/nologin
-    - password: YouMightWantToChangeThisDefaultPassword
-    - hash_password: True 
+    - password: {{ pillar['users'][user]['password'] }}
+    - hash_password: True
+
+{% endfor %}
 
 add_config:
   file.managed:
